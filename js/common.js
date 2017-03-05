@@ -3,8 +3,11 @@
  */
 var search = $("div.nav span.search-btn");
 search.hover(function() {
+    search.hasClass("unfocus") ? search.removeClass("unfocus") : null;
     search.addClass("focus");
 }, function() {
-    search.val();
     search.removeClass("focus");
+    search.addClass("unfocus");
+    //一秒之后删除unfocus类
+    setTimeout("search.removeClass('unfocus')", 1000);
 });

@@ -62,3 +62,37 @@ body {
     left:-26px;
     top:12px;
 }
+
+/*测试搜索动画*/
+.nav .focus .search-input{
+    animation:animIn ;
+    animation-duration: 1s;
+}
+/*进来动画*/
+@keyframes animIn {
+    from{width:36px}
+    to {width:200px}
+}
+-webkit-animation:animIn  {
+    -webkit-animation-duration:1s;
+}
+.nav .unfocus .search-input {
+    animation:animOut;
+    animation-duration:1s;
+    background:white;
+}
+.nav .unfocus .layui-icon {
+    display: inline;
+    position:relative;
+    left:-26px;
+    top:3px;
+}
+/*出去动画*/
+@keyframes animOut {
+    from{width:200px}
+    to {width:36px}
+}
+-webkit-animation:animOut  {
+    -webkit-animation-duration:1s;
+}
+/*测试搜索动画结束*/
