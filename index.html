@@ -8,31 +8,38 @@
     <link rel="stylesheet" href="css/nav.css"/>
     <link rel="stylesheet" href="css/footer.css">
     <script src="./lib/jquery-3.1.1.min.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./lib/angular/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="app">
     <!--导航栏-->
     <div class="nav">
         <ul class="layui-nav">
             <li class="layui-nav-item layui-this">
                 <a href="">首页</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="">编程语言</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">首页子项1</a></dd>
-                    <dd><a href="">首页子项2</a></dd>
-                    <dd><a href="">首页子项3</a></dd>
+                    <dd><a href="">java</a></dd>
+                    <dd><a href="">c++</a></dd>
+                    <dd><a href="">js</a></dd>
+                    <dd><a href="">html/css</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="">老高推荐的VPS</a>
+                <a href="">后台技术</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">SpringBoot</a></dd>
+                    <dd><a href="">Hibernate</a></dd>
+                    <dd><a href="">Struts2</a></dd>
+                    <dd><a href="">SpringMVC</a></dd>
+                </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="">路由器教程</a>
+                <a href="">生活感悟</a>
             </li>
             <li class="layui-nav-item">
-                <a href="">翻越功夫墙</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="">Typecho插件</a>
+                <a href="">杂谈</a>
             </li>
             <li class="layui-nav-item">
                 <a href="">归档</a>
@@ -49,173 +56,82 @@
         </span>
     </div>
     <!--格言或笑话-->
-    <div class="daily">
+    <div class="daily" ng-controller="daily">
         <div class="left">
             <fieldset class="layui-elem-field layui-field-title">
-                <legend>业精于勤</legend>
+                <legend>每日一笑</legend>
             </fieldset>
             <div class="content">
-                “业精于勤荒于嬉”，精深的业技靠的是勤学、刻苦努力，靠的是争分夺秒的勤学苦练才会有精深的技术。得在认真，失在随便。
+                <!--“业精于勤荒于嬉”，精深的业技靠的是勤学、刻苦努力，靠的是争分夺秒的勤学苦练才会有精深的技术。得在认真，失在随便。-->
+                {{daily.joke}}
             </div>
         </div>
         <div class="center">
             <fieldset class="layui-elem-field layui-field-title">
-                <legend>学无止境</legend>
+                <legend>人生格言</legend>
             </fieldset>
             <div class="content">
-                学习，探索，研究，从不了解到了解，从无知到掌握，到灵活运用，在不断的学习中加深认识。由浅入深，由表及里。
+                <!--学习，探索，研究，从不了解到了解，从无知到掌握，到灵活运用，在不断的学习中加深认识。由浅入深，由表及里。-->
+                {{daily.motto}}
             </div>
         </div>
         <div class="right">
             <fieldset class="layui-elem-field layui-field-title">
-                <legend>工匠精神</legend>
+                <legend>人物事迹</legend>
             </fieldset>
             <div class="content">
-                精益求精，注重细节，追求完美和极致，不惜花费时间精力，孜孜不倦，反复改进产品，把99%提高到99.99%。
+                <!--精益求精，注重细节，追求完美和极致，不惜花费时间精力，孜孜不倦，反复改进产品，把99%提高到99.99%。-->
+                {{daily.famous}}
             </div>
         </div>
     </div>
     <!--显示文章等等东西-->
     <div class="middle">
         <!--首页内容列表-->
-        <div class="list">
+        <ul class="list" ng-controller="articleList">
             <!--列表项-->
-            <div class="list-item no-pic">
-                <a href="">
-                    <img class="pic" src="http://www.phplaozhang.com/uploads/images/20170110/24204ae82d635a67a688d37125b7a510_thumb_165_110.jpg" alt="">
+            <li  ng-repeat="x in list" class="list-item {{x.hasPic}}" >
+                <a href="content.html?id={{x.id}}">
+                    <img class="pic" src="{{x.picPath}}" alt="">
                 </a>
-                <h2><a href="">Maximum function nesting level of '100' reached, aborting!</a></h2>
+                <h2><a href="content.html?id={{x.id}}">{{x.title}}</a></h2>
                 <!--介绍-->
                 <div class="intro">
                     <ul>
-                        <li>老张</li>
-                        <li>10天前</li>
-                        <li>PHP</li>
+                        <li>{{x.author}}</li>
+                        <li>{{x.time}}</li>
+                        <li>{{x.category}}</li>
                         <li class="comment">
                             <span class="layui-icon">&#xe63a;</span>
-                            <span>1</span>
+                            <span>{{x.commentCount}}</span>
                         </li>
                     </ul>
                 </div>
                 <!--简介-->
                 <div class="brief">
-                    <p>PHP 中当函数调用层数超过限制的时候就会出现 Maximum function nesting level of ‘100’ reached 默认情况下函数嵌套不能超过 100 层</p>
+                    <p>{{x.brief}}</p>
                 </div>
-            </div>
-            <div class="list-item no-pic">
-                <a href="">
-                    <img class="pic" src="http://www.phplaozhang.com/uploads/images/20170110/24204ae82d635a67a688d37125b7a510_thumb_165_110.jpg" alt="">
-                </a>
-                <h2><a href="">阻止a标签href默认跳转事件!</a></h2>
-                <!--介绍-->
-                <div class="intro">
-                    <ul>
-                        <li>老张</li>
-                        <li>27天前</li>
-                        <li>WEB前端</li>
-                        <li class="comment">
-                            <span class="layui-icon">&#xe63a;</span>
-                            <span>1</span>
-                        </li>
-                    </ul>
-                </div>
-                <!--简介-->
-                <div class="brief">
-                    <p>PHP 中当函数调用层数超过限制的时候就会出现 Maximum function nesting level of ‘100’ reached 默认情况下函数嵌套不能超过 100 层</p>
-                </div>
-            </div>
-            <div class="list-item ">
-                <a href="">
-                    <img class="pic" src="http://www.phplaozhang.com/uploads/images/20170110/24204ae82d635a67a688d37125b7a510_thumb_165_110.jpg" alt="">
-                </a>
-                <h2><a href="">个人博客应该选择什么样的域名和域名后缀</a></h2>
-                <!--介绍-->
-                <div class="intro">
-                    <ul>
-                        <li>老张</li>
-                        <li>2个月前</li>
-                        <li>建站</li>
-                        <li class="comment">
-                            <span class="layui-icon">&#xe63a;</span>
-                            <span>25</span>
-                        </li>
-                    </ul>
-                </div>
-                <!--简介-->
-                <div class="brief">
-                    <p> 不论搭建什么样的网站，选择一个好的域名都是很有必要的，选择一个好的域名对网站的意义也是不言而喻的。每一个网站都有之对应的域名，就像人的名字一样。每个人都想自己</p>
-                </div>
-            </div>
-            <div class="list-item no-pic">
-                <a href="">
-                    <img class="pic" src="http://www.phplaozhang.com/uploads/images/20170110/24204ae82d635a67a688d37125b7a510_thumb_165_110.jpg" alt="">
-                </a>
-                <h2><a href="">PHP面试题汇总</a></h2>
-                <!--介绍-->
-                <div class="intro">
-                    <ul>
-                        <li>老张</li>
-                        <li>2个月前</li>
-                        <li>PHP</li>
-                        <li class="comment">
-                            <span class="layui-icon">&#xe63a;</span>
-                            <span>25</span>
-                        </li>
-                    </ul>
-                </div>
-                <!--简介-->
-                <div class="brief">
-                    <p>1.表单中 get与post提交方法的区别?答:get </p>
-                </div>
-            </div>
-            <div class="list-item ">
-                <a href="">
-                    <img class="pic" src="http://www.phplaozhang.com/uploads/images/20161231/94dabe3651025796b1a9b0714cbbe02b_thumb_165_110.jpg" alt="">
-                </a>
-                <h2><a href="">老张博客上线了！</a></h2>
-                <!--介绍-->
-                <div class="intro">
-                    <ul>
-                        <li>老张</li>
-                        <li>3个月前</li>
-                        <li>杂谈</li>
-                        <li class="comment">
-                            <span class="layui-icon">&#xe63a;</span>
-                            <span>25</span>
-                        </li>
-                    </ul>
-                </div>
-                <!--简介-->
-                <div class="brief">
-                    <p>今年(2016年)年初就打算做一个个人博客了，在年初时候想着才年初，今年还有很长时间，所以就没有着急，一直拖着，这一拖就是半年。在五六月分的时候，想着这都半年过去了，博 </p>
-                </div>
-            </div>
-
-        </div>
+            </li>
+        </ul>
         <div class="slide">
             <!--博主信息-->
            <div class="list-item">
                 <h2>博主信息</h2>
                <hr/>
                <ol>
-                   <li>姓名：张丹峰</li>
-                   <li>职业：PHP程序员</li>
-                   <li>座右铭：业精于勤</li>
-                   <li>QQ群：602099721</li>
+                   <li>姓名：伯兰</li>
+                   <li>职业：java程序员</li>
+                   <li>座右铭：无</li>
                </ol>
            </div>
             <!--最新文章-->
-            <div class="list-item new-list">
+            <div class="list-item new-list" ng-controller="newArticle">
                 <h2>最新文章</h2>
                 <hr/>
                 <ol>
-                    <li><a href="">Maximum function nesting level of '100'</a></li>
-                    <li><a href="">阻止a标签href默认跳转事件</a></li>
-                    <li><a href="">个人博客应该选择什么样的域名和域名后缀</a></li>
-                    <li><a href="">PHP面试题汇总</a></li>
-                    <li><a href="">非常实用的PHP常用函数汇总-加密解密</a></li>
-                    <li><a href="">老张博客上线啦(二)</a></li>
-                    <li><a href="">老张博客上线了</a></li>
+                    <li ng-repeat="x in news">
+                        <a href="content.html?id={{x.id}}">{{x.title}}</a>
+                    </li>
                 </ol>
             </div>
         </div>
@@ -236,6 +152,7 @@
 </body>
 <script src="./lib/layui/layui.js"></script>
 <script src="js/common.js"></script>
+<script src="./js/index.js"></script>
 <script>
     /**
      * 导航栏需要启用element模块，例如hover时候的下划线，子菜单等等功能
