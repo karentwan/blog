@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>日记</title>
+    <title>注册</title>
     <link rel="stylesheet" href="./lib/layui/css/layui.css"  media="all">
     <link rel="stylesheet" href="css/nav.css"/>
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/journal.css">
     <script src="./lib/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="css/login.css"/>
 </head>
 <body>
     <div class="nav">
@@ -46,41 +46,44 @@
             <i class="layui-icon">&#xe615;</i>
     </span>
 </div>
-    <div class="site-tips explain">
-        <p>
-            <a href="">首页</a><span>—</span>
-            日记
-        </p>
-    </div>
     <div class="main">
-        <div class="title">
-            <i class="layui-icon">&#xe642;</i>
-            <span class="sub-title">个人日记生成记录</span>
-        </div>
-        <ul>
-            <li>
-                <span>2017年02月25日</span>
-                <span class="icon">
-                    <i class="layui-icon">&#xe617;</i>
+        <p class="title">注册</p>
+        <hr/>
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item" >
+                <label class="layui-form-label" for="">用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="username" required placeholder="用户名" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="password" required class="layui-input" placeholder="密码"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">确认密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="confirm" required class="layui-input" placeholder="确认密码"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">验证码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="confirm" class="layui-input" placeholder="确认密码"/>
+                </div>
+                <span class="verify">
+                    <img src="" alt="">
                 </span>
-                <span>老张博客的后台模版已做分享，用的layui搭建的简洁大方的前台模版，简单易用，方便！</span>
-            </li>
-            <li>
-                <span>2017年02月25日</span>
-                <span>
-                    <i class="layui-icon">&#xe617;</i>
-                </span>
-                <span>老张博客的后台模版已做分享，用的layui搭建的简洁大方的前台模版，简单易用，方便！</span>
-            </li>
-            <li>
-                <span>2017年02月25日</span>
-                <span>
-                    <i class="layui-icon">&#xe617;</i>
-                </span>
-                <span>老张博客的后台模版已做分享，用的layui搭建的简洁大方的前台模版，简单易用，方便！</span>
-            </li>
-        </ul>
+            </div>
+
+            <div class="layui-form-item">
+                <a href="" class="layui-btn">立即注册</a>
+            </div>
+        </form>
     </div>
+
     <div class="layui-footer footer">
         <div>
             <span>老张博客</span>

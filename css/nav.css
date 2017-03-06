@@ -96,3 +96,8 @@ body {
     -webkit-animation-duration:1s;
 }
 /*测试搜索动画结束*/
+
+::selection {
+    background-color: #009688;
+    color:#fff;
+}

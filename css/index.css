@@ -12,7 +12,6 @@
     margin: 0 auto;
 }
 
-
 .daily .left {
     margin-top: 100px;
     width: 27%;
@@ -25,7 +24,7 @@
 }
 
 .daily .left:hover {
-    box-shadow: 2px 2px 2px 2px rgba(16, 84, 84, .5);
+    box-shadow: 1px 1px 1px 1px rgba(16, 84, 84, .5);
 }
 
 .daily .center {
@@ -39,7 +38,7 @@
 }
 
 .daily .center:hover {
-    box-shadow: 2px 2px 2px 2px rgba(16, 84, 84, .5);
+    box-shadow:1px 1px 1px 1px rgba(16, 84, 84, .5);
 }
 
 .daily .right {
@@ -53,7 +52,7 @@
 }
 
 .daily .right:hover {
-    box-shadow: 2px 2px 2px 2px rgba(16, 84, 84, .5);
+    box-shadow: 1px 1px 1px 1px rgba(16, 84, 84, .5);
 }
 
 .daily .content {
@@ -82,7 +81,7 @@
 }
 
 .middle .list .list-item:hover {
-    box-shadow: 3px 3px 3px 3px rgba(16, 84, 84, .5);
+    box-shadow: 1px 1px 1px 1px rgba(16, 84, 84, .5);
 }
 
 .middle .list .list-item .pic {

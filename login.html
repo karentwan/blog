@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>日记</title>
+    <title>登陆</title>
     <link rel="stylesheet" href="./lib/layui/css/layui.css"  media="all">
     <link rel="stylesheet" href="css/nav.css"/>
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/journal.css">
     <script src="./lib/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="css/login.css"/>
 </head>
 <body>
     <div class="nav">
@@ -46,40 +46,29 @@
             <i class="layui-icon">&#xe615;</i>
     </span>
 </div>
-    <div class="site-tips explain">
-        <p>
-            <a href="">首页</a><span>—</span>
-            日记
-        </p>
-    </div>
     <div class="main">
-        <div class="title">
-            <i class="layui-icon">&#xe642;</i>
-            <span class="sub-title">个人日记生成记录</span>
-        </div>
-        <ul>
-            <li>
-                <span>2017年02月25日</span>
-                <span class="icon">
-                    <i class="layui-icon">&#xe617;</i>
-                </span>
-                <span>老张博客的后台模版已做分享，用的layui搭建的简洁大方的前台模版，简单易用，方便！</span>
-            </li>
-            <li>
-                <span>2017年02月25日</span>
-                <span>
-                    <i class="layui-icon">&#xe617;</i>
-                </span>
-                <span>老张博客的后台模版已做分享，用的layui搭建的简洁大方的前台模版，简单易用，方便！</span>
-            </li>
-            <li>
-                <span>2017年02月25日</span>
-                <span>
-                    <i class="layui-icon">&#xe617;</i>
-                </span>
-                <span>老张博客的后台模版已做分享，用的layui搭建的简洁大方的前台模版，简单易用，方便！</span>
-            </li>
-        </ul>
+        <p class="title">登陆</p>
+        <hr/>
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item" >
+                <label class="layui-form-label" for="">用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="username" required placeholder="用户名" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" required name="password" class="layui-input" placeholder="密码"/>
+                </div>
+                <a class="forget" href="">忘记密码?</a>
+            </div>
+            <div class="layui-form-item">
+                <a href="" class="layui-btn">立即登陆</a>
+                <a href="register.html" class="layui-btn register">注册</a>
+            </div>
+        </form>
+
     </div>
     <div class="layui-footer footer">
         <div>

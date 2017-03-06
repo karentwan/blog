@@ -13,6 +13,11 @@
     padding-left:10px;
 }
 
+.explain span {
+    margin-left:10px;
+    margin-right:10px;
+}
+
 .main {
     height:1000px;
     background:white;
@@ -42,6 +47,7 @@
 .main li i {
     font-size: 16px;
     z-index:2;
+    color:#009688;
 }
 
 .main ul li span.icon {
