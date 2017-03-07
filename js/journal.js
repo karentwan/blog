@@ -18,8 +18,8 @@ app.controller("listController", function($scope, $http){
                 for(var i in dataArr) {
                     var o = {};
                     var o1 = dataArr[i];
-                    // o.date = date('Y-m-d', o1.time);
-                    o.date = "2017年02月25日";
+                    o.date = date('Y-m-d', o1.time);
+                    // o.date = "2017年02月25日";
                     o.thing = o1.thing;
                     arr.push(o);
                 }

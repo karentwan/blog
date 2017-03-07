@@ -73,3 +73,8 @@
     margin-right:10px;
     margin-left:10px;
 }
+
+.main li span.time {
+    display:inline-block;
+    width:106px;
+}

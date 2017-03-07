@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="css/footer.css">
     <script src="./lib/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/content.css">
+    <script src="./lib/angular/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="app">
     <div class="nav">
     <ul class="layui-nav">
         <li class="layui-nav-item layui-this">
@@ -63,7 +64,7 @@
         </p>
     </div>
     <div class="main">
-        <div class="left">
+        <div class="left" ng-controller="contentController">
             <h2 class="title">老张博客上线啦</h2>
             <div class="author">
                 <ul>
@@ -109,7 +110,7 @@
                 </ul>
             </div>
             <!--相关文章-->
-            <div class="relative-article">
+            <div class="relative-article" ng-controller="relativeController">
                 <h2>相关文章</h2>
                 <hr/>
                 <div>
@@ -144,6 +145,7 @@
 
 <script src="./lib/layui/layui.js"></script>
 <script src="js/common.js"></script>
+<script src="js/content.js"></script>
 <script>
     layui.use('element', function() {
 

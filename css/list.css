@@ -89,3 +89,8 @@
 .main .page-btn .layui-input-inline {
     width:90px;
 }
+
+.main .brief {
+    height:52px;
+    overflow: hidden;
+}
