@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
     <title>列表</title>
@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/listwithoutpic.css">
     <script src="./lib/jquery-3.1.1.min.js"></script>
+    <script src="./lib/angular/angular.min.js"></script>
 </head>
 <body>
 
@@ -60,80 +61,30 @@
     </div>
 
     <div class="main">
-        <div class="left">
+        <div class="left" ng-controller="list">
             <!--显示文章列表-->
             <ul class="list">
-                <li class="list-item">
-                    <a href="" class="item-pic">
-                        <img src="images/00.jpg" alt="">
+                <li class="list-item" ng-repeat="x in arr">
+                    <a href="content.html?id={{x.id}}" class="item-pic">
+                        <img src="{{x.userPic}}" alt="">
                     </a>
                     <div class="item-content">
                         <p class="item-content-title">
-                            <a href="">
-                                大版本前奏曲：layui 1.0.9_rls 发布，1.x尾篇
+                            <a href="content.html?id={{x.id}}">
+                                {{x.title}}
                             </a>
                         </p>
                         <ul class="item-content-author">
-                            <li>闲心</li>
-                            <li>七天前</li>
-                            <li>layui</li>
+                            <li>{{x.author}}</li>
+                            <li>{{x.date}}</li>
+                            <li>{{x.category}}</li>
                             <li class="icon-right">
                                 <i class="layui-icon">&#xe63a;</i>
-                                <span>2</span>
+                                <span>{{x.commentCount}}</span>
                             </li>
                             <li class="icon-right">
                                 <i class="layui-icon">&#xe62c;</i>
-                                <span>4</span>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="list-item">
-                    <a href="" class="item-pic">
-                        <img src="images/00.jpg" alt="">
-                    </a>
-                    <div class="item-content">
-                        <p class="item-content-title">
-                            <a href="">
-                                大版本前奏曲：layui 1.0.9_rls 发布，1.x尾篇
-                            </a>
-                        </p>
-                        <ul class="item-content-author">
-                            <li>闲心</li>
-                            <li>七天前</li>
-                            <li>layui</li>
-                            <li class="icon-right">
-                                <i class="layui-icon">&#xe63a;</i>
-                                <span>2</span>
-                            </li>
-                            <li class="icon-right">
-                                <i class="layui-icon">&#xe62c;</i>
-                                <span>4</span>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="list-item">
-                    <a href="" class="item-pic">
-                        <img src="images/00.jpg" alt="">
-                    </a>
-                    <div class="item-content">
-                        <p class="item-content-title">
-                            <a href="">
-                                大版本前奏曲：layui 1.0.9_rls 发布，1.x尾篇
-                            </a>
-                        </p>
-                        <ul class="item-content-author">
-                            <li>闲心</li>
-                            <li>七天前</li>
-                            <li>layui</li>
-                            <li class="icon-right">
-                                <i class="layui-icon">&#xe63a;</i>
-                                <span>2</span>
-                            </li>
-                            <li class="icon-right">
-                                <i class="layui-icon">&#xe62c;</i>
-                                <span>4</span>
+                                <span>{{x.viewCount}}</span>
                             </li>
                         </ul>
                     </div>
@@ -144,19 +95,16 @@
             <fieldset class="layui-elem-field">
                 <legend>分页</legend>
                 <div class="layui-btn-group layui-form">
-                    <button class="layui-btn">首页</button>
-                    <button class="layui-btn">上一页</button>
-                    <button class="layui-btn">下一页</button>
-                    <button class="layui-btn">尾页</button>
+                    <button class="layui-btn" ng-click="firstPage()">首页</button>
+                    <button class="layui-btn" ng-click="previous()">上一页</button>
+                    <button class="layui-btn" ng-click="nextPage()">下一页</button>
+                    <button class="layui-btn" ng-click="lastPage()">尾页</button>
                     <div class="layui-input-inline">
                         <select name="page" id="" lay-verify="required">
                             <option value=""></option>
-                            <option value="0">第一页</option>
-                            <option value="1">第二页</option>
-                            <option value="2">第三页</option>
-                            <option value="3">第四页</option>
-                            <option value="4">第五页</option>
-                            <option value="5">第六页</option>
+                            <option value="{{i}}" ng-repeat="i in pages">
+                                第{{i+1}}页
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -184,16 +132,16 @@
                 </ul>
             </div>
             <!--相关文章-->
-            <div class="relative-article">
+            <div class="relative-article" ng-controller="relative">
                 <h2>相关文章</h2>
                 <hr/>
                 <div>
                     <ol>
-                        <li><a href="">老张博客上线了（二）</a></li>
-                        <li><a href="">老张博客上线了</a></li>
-                        <li><a href="">老张博客上线了</a></li>
-                        <li><a href="">老张博客上线了</a></li>
-                        <li><a href="">老张博客上线了</a></li>
+                        <li ng-repeat="x in arr">
+                            <a href="content.html?id={{x.id}}">
+                                {{x.title}}
+                            </a>
+                        </li>
                     </ol>
                 </div>
             </div>
@@ -219,6 +167,7 @@
 </body>
 <script src="./lib/layui/layui.js"></script>
 <script src="js/common.js"></script>
+<script src="js/listwithoutpic.js"></script>
 <script>
     /*
      * 要启用form表单，否则不能使用

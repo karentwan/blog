@@ -3,9 +3,9 @@
  * 创建应用
  */
 var config = {
-    "dailyUrl":"json/daily.json",
-    "newArticle":"json/newArticle.json",
-    "indexList":"json/indexList.json"
+    "dailyUrl":"json/index/daily.json",
+    "newArticle":"json/index/newArticle.json",
+    "indexList":"json/index/indexList.json"
 }
 var app = angular.module("app", []);
 //日常笑话模块
