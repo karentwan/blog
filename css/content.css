@@ -28,6 +28,7 @@
     float:left;
     height:890px;
     background: white;
+    position:relative;
 }
 
 .main .left .title {
@@ -55,6 +56,13 @@ hr {
 .main .left .content {
     padding:10px 20px;
     line-height: 23px;
+}
+
+.main .left .indicator {
+    position:absolute;
+    bottom:20px;
+    border-top: 1px solid #009688;
+    width:100%;
 }
 
 .main .left .indicator ul {
@@ -92,7 +100,7 @@ hr {
 
 .main .right .column-nav li {
     float:left;
-    margin-right:60px;
+    margin-right:23px;
     margin-bottom:30px;
     width:124px;
 }

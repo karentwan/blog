@@ -19,18 +19,28 @@ body {
     position:absolute;
     top:12px;
     right:100px;
+    width:200px;
 }
 
 .nav .search-btn .search-input {
-    width:36px;
-    line-height: 38px;
+    background: #5c5f68;
+    display: inline-block;
     border:none;
-    background: #393D49;
-    cursor:pointer;
+    width:87%;
+}
+
+.nav .search-btn .search-input:focus {
+    background: white;
+    border:none;
 }
 
 .nav .search-btn .layui-icon {
-    display:none;
+    /*display:none;*/
+    display: inline;
+    position:relative;
+    left:-30px;
+    top:4px;
+    font-size:22px;
 }
 
 
