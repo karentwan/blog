@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加新文章</title>
+    <link rel="stylesheet" href="../lib/layui/css/layui.css"  media="all">
+    <script src="../lib/jquery-3.1.1.min.js"></script>
+    <script src="../lib/angular/angular.min.js"></script>
+    <link rel="stylesheet" href="../css/article.css">
+    <link rel="stylesheet" href="../css/footer.css">
+</head>
+<body ng-app="app" ng-controller="content">
+
+    <div class="layui-header" ng-controller="nav" >
+        <ul class="layui-nav">
+            <li class="layui-nav-item">
+                <a href="../index.html">
+                    博客主页
+                </a>
+            </li>
+            <li class="layui-nav-item right">
+                <img class="user-img" ng-src="{{user.userImg}}" alt="">
+                <span>
+                    Hi，
+                    <span>{{user.username}}</span>
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main" >
+
+        <form action="" class="layui-form left">
+            <!--标题-->
+            <div class="layui-form-item">
+                <label for="" class="layui-form-label">标题</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required placeholder="请输入标题" class="layui-input" ng-model="data.title">
+                </div>
+            </div>
+            <!--所属种类-->
+            <!--TODO 使用layui生成的select不能作为angular的model-->
+            <div class="layui-form-item">
+                <label for="" class="layui-form-label">所属种类</label>
+                <div class="layui-input-block">
+                    <select ng-model="categoryName"
+                    ng-options="x for x in categories" lay-filter="category">
+                    </select>
+                </div>
+            </div>
+            <!--展示地址-->
+            <div class="layui-form-item" ng-if="data.categoryName == '代码实例'">
+                <label for="" class="layui-form-label">展示地址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="showUrl" placeholder="请输入展示地址" class="layui-input" ng-model="data.showUrl">
+                </div>
+            </div>
+            <!--下载地址-->
+            <div class="layui-form-item" ng-if="data.categoryName == '代码实例'">
+                <label for="" class="layui-form-label">下载地址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="downloadUrl" placeholder="请输入下载地址" class="layui-input" ng-model="data.downloadUrl">
+                </div>
+            </div>
+            <!--小图上传-->
+            <div class="layui-form-item">
+                <label for="" class="layui-form-label">小图</label>
+                <div class="layui-input-block">
+                    <input type="text" name="imgPic" class="file-path" disabled="true" placeholder="小图路径" id="imgPic" ng-model="data.imgPic">
+                    <input type="file" name="file"  class="layui-upload-file">
+                </div>
+            </div>
+            <!--大图上传-->
+            <div class="layui-form-item" >
+                <label for="" class="layui-form-label">大图</label>
+                <div class="layui-input-block">
+                    <input type="text" name="backPic" class="file-path" disabled="true" placeholder="大图路径（代码实例）" id="backPic" ng-model="data.backPic">
+                    <input type="file" name="file" class="layui-upload-file" >
+                </div>
+            </div>
+            <!--简介-->
+            <div class="layui-form-item">
+                <label for="" class="layui-form-label">简介</label>
+                <div class="layui-input-block">
+                    <textarea name="brief" required placeholder="请输入简介" class="layui-textarea" ng-model="data.brief">
+                    </textarea>
+                </div>
+            </div>
+            <!--提交按钮-->
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <a class="layui-btn" ng-click="click()" href="javascript:void(0)">立即提交</a>
+                </div>
+            </div>
+        </form>
+
+        <div class="content">
+            <textarea id="content">
+            </textarea>
+        </div>
+    </div>
+    <div class="layui-footer footer">
+        <div>
+            <span>karent.cn</span>
+        </div>
+        <div>绿色放心的小站</div>
+        <div>
+            @Copyright 万
+        </div>
+    </div>
+</body>
+<script src="../lib/layui/layui.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/article.js"></script>
+</html>

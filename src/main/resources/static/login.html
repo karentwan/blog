@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    <link rel="stylesheet" href="lib/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="css/nav.css"/>
+    <link rel="stylesheet" href="css/footer.css">
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="css/login.css"/>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="js/util.js"></script>
+</head>
+<body ng-app="app">
+
+    <div class="nav">
+        <ul class="layui-nav">
+            <li class="layui-nav-item layui-this">
+                <a href="index.html">首页</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="listwithoutpic.html?categoryName=编程语言">编程语言</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="list.html">代码实例</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="listwithoutpic.html?categoryName=生活感悟">生活感悟</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="listwithoutpic.html?categoryName=杂谈">杂谈</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="journal.html">网站大事件</a>
+            </li>
+        </ul>
+        <!--搜索栏-->
+        <!--<span class="search-btn">-->
+                <!--<input type="text" placeholder="搜索" class="search-input layui-input " maxlength="20"/>-->
+                <!--<i class="layui-icon">&#xe615;</i>-->
+            <!--</span>-->
+    </div>
+
+    <div class="main" ng-controller="form">
+        <p class="title">登陆</p>
+        <hr/>
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item" >
+                <label class="layui-form-label" for="">用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="username" required placeholder="用户名" class="layui-input" ng-model="user.username"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" required name="password" class="layui-input" placeholder="密码" ng-model="user.password"/>
+                </div>
+                <a class="forget" href="javascript:void(0)">忘记密码?</a>
+            </div>
+            <div class="layui-form-item">
+                <a href="javascript:void(0)" class="layui-btn" ng-click="click()">立即登陆</a>
+                <a href="register.html" class="layui-btn register">注册</a>
+            </div>
+        </form>
+    </div>
+    <div class="layui-footer footer">
+        <div>
+            <span>karent.cn</span>
+        </div>
+        <div>绿色放心的小站</div>
+        <div>
+            @Copyright 万
+        </div>
+    </div>
+</body>
+<script src="lib/layui/layui.js"></script>
+<script src="js/common.js"></script>
+<script src="js/login.js"></script>
+<script>
+
+</script>
+</html>

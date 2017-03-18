@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="./lib/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="css/nav.css"/>
+    <link rel="stylesheet" href="css/footer.css"/>
+    <script src="./lib/jquery-3.1.1.min.js"></script>
+    <script src="./lib/angular/angular.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body ng-app="app">
+    <!--导航栏-->
+    <div class="nav" >
+        <ul class="layui-nav">
+            <li class="layui-nav-item layui-this">
+                <a href="index.html">首页</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="listwithoutpic.html?categoryName=编程语言">编程语言</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="list.html">代码实例</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="listwithoutpic.html?categoryName=生活感悟">生活感悟</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="listwithoutpic.html?categoryName=杂谈">杂谈</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="journal.html">网站大事件</a>
+            </li>
+        </ul>
+        <div class="mobile">
+            <a href="javascript:swit()" class="nav-btn">
+                <i class="fa-navicon"></i>
+            </a>
+            <span class="title">
+                小万博客
+            </span>
+            <!--手机端显示的菜单-->
+            <div class="mobile-nav tran-anim">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="listwithoutpic.html?categoryName=编程语言">编程语言</a></li>
+                    <li><a href="list.html">代码实例</a></li>
+                    <li><a href="listwithoutpic.html?categoryName=生活感悟">生活感悟</a></li>
+                    <li><a href="listwithoutpic.html?categoryName=杂谈">杂谈</a></li>
+                    <li><a href="journal.html">网站大事件</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--遮罩-->
+        <div class="mask" style="display: none">
+        </div>
+    </div>
+    <!--格言或笑话-->
+    <div class="daily" ng-controller="daily">
+        <div class="left">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>每日一笑</legend>
+            </fieldset>
+            <div class="content">
+                {{daily.joke}}
+            </div>
+        </div>
+        <div class="center">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>人生格言</legend>
+            </fieldset>
+            <div class="content">
+                <ol>
+                    <li>生活是一面镜子。你对它笑，它就对你笑；你对它哭，它也对你哭。</li>
+                    <li>千万别迷恋网络游戏，要玩就玩好人生这场大游戏。</li>
+                    <li>我们心中的恐惧，永远比真正的危险巨大的多。</li>
+                </ol>
+            </div>
+        </div>
+        <div class="right">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>人物事迹</legend>
+            </fieldset>
+            <div class="content">
+                {{daily.famous}}
+            </div>
+        </div>
+    </div>
+    <!--显示文章等等东西-->
+    <div class="middle">
+        <!--首页内容列表-->
+        <ul class="list" ng-controller="articleList">
+            <!--列表项-->
+            <li  ng-repeat="x in list" class="list-item {{x.hasPic}}" >
+                <a href="content.html?id={{x.id}}&name={{x.category}}">
+                    <img class="pic" ng-src="{{x.picPath}}" alt="" ng-if="x.picPath">
+                </a>
+                <h2><a href="content.html?id={{x.id}}&name={{x.category}}">{{x.title}}</a></h2>
+                <!--介绍-->
+                <div class="intro">
+                    <ul>
+                        <li>{{x.author}}</li>
+                        <li>{{x.time}}</li>
+                        <li>{{x.category}}</li>
+                        <li class="comment">
+                            <span class="layui-icon">&#xe63a;</span>
+                            <span>{{x.commentCount}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--简介-->
+                <div class="brief">
+                    <p>{{x.brief}}</p>
+                </div>
+            </li>
+        </ul>
+        <div class="slide">
+            <!--博主信息-->
+           <div class="list-item">
+                <h2>博主信息</h2>
+               <hr/>
+               <ol>
+                   <li>姓名：伯兰</li>
+                   <li>职业：java程序员</li>
+                   <li>座右铭：无</li>
+                   <li>QQ:826359422</li>
+               </ol>
+           </div>
+            <!--最新文章-->
+            <div class="list-item new-list" ng-controller="newArticle">
+                <h2>最新文章</h2>
+                <hr/>
+                <ol>
+                    <li ng-repeat="x in news">
+                        <a href="content.html?id={{x.id}}">{{x.title}}</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+    <!--底部-->
+    <div class="layui-footer footer">
+        <div>
+            <span>karent.cn</span>
+        </div>
+        <div>绿色放心的小站</div>
+        <div>
+            @Copyright 万
+        </div>
+    </div>
+
+</body>
+<script src="./lib/layui/layui.js"></script>
+<script src="js/common.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/util.js"></script>
+<script src="./js/search.js"></script>
+</html>

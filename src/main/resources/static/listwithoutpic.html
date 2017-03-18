@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>列表</title>
+    <link rel="stylesheet" href="./lib/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="css/nav.css"/>
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/listwithoutpic.css">
+    <script src="./lib/jquery-3.1.1.min.js"></script>
+    <script src="./lib/angular/angular.min.js"></script>
+    <script src="./js/util.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body>
+
+    <div class="nav">
+        <ul class="layui-nav">
+            <li class="layui-nav-item layui-this">
+                <a href="index.html">首页</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="listwithoutpic.html?categoryName=编程语言">编程语言</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="list.html">代码实例</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="listwithoutpic.html?categoryName=生活感悟">生活感悟</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="listwithoutpic.html?categoryName=杂谈">杂谈</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="journal.html">网站大事件</a>
+            </li>
+        </ul>
+        <div class="mobile">
+            <a href="javascript:swit()" class="nav-btn">
+                <i class="fa-navicon"></i>
+            </a>
+            <span class="title">
+                小万博客
+            </span>
+            <!--手机端显示的菜单-->
+            <div class="mobile-nav tran-anim">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="listwithoutpic.html?categoryName=编程语言">编程语言</a></li>
+                    <li><a href="list.html">代码实例</a></li>
+                    <li><a href="listwithoutpic.html?categoryName=生活感悟">生活感悟</a></li>
+                    <li><a href="listwithoutpic.html?categoryName=杂谈">杂谈</a></li>
+                    <li><a href="journal.html">网站大事件</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <!--遮罩-->
+        <div class="mask" style="display: none">
+        </div>
+    </div>
+
+    <div class="site-tips head" ng-controller="head">
+        <p>列表<span>—</span>{{category}}</p>
+    </div>
+
+    <div class="main">
+        <div class="left" ng-controller="list">
+            <!--显示文章列表-->
+            <ul class="list">
+                <li class="list-item" ng-repeat="x in arr">
+                    <a href="content.html?id={{x.id}}&name={{category}}" class="item-pic">
+                        <img ng-src="{{x.userPic}}" alt="">
+                    </a>
+                    <div class="item-content">
+                        <p class="item-content-title">
+                            <a href="content.html?id={{x.id}}&name={{category}}">
+                                {{x.title}}
+                            </a>
+                        </p>
+                        <ul class="item-content-author">
+                            <li>{{x.author}}</li>
+                            <li>{{x.date}}</li>
+                            <li>{{x.category}}</li>
+                            <li class="icon-right">
+                                <i class="layui-icon">&#xe63a;</i>
+                                <span>{{x.commentCount}}</span>
+                            </li>
+                            <li class="icon-right">
+                                <i class="layui-icon">&#xe62c;</i>
+                                <span>{{x.viewCount}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <!--分页-->
+            <div class="page-btn">
+            <fieldset class="layui-elem-field">
+                <legend>分页</legend>
+                <div class="layui-btn-group layui-form">
+                    <button class="layui-btn" ng-click="firstPage()">首页</button>
+                    <button class="layui-btn" ng-click="previous()">上一页</button>
+                    <button class="layui-btn" ng-click="nextPage()">下一页</button>
+                    <button class="layui-btn" ng-click="lastPage()">尾页</button>
+                    <div class="layui-input-inline">
+                        <span>共</span>
+                        <span>{{pages.totalPages ? pages.totalPages : 1}}</span>
+                        <span>页</span>，
+                        <span>当前第</span>
+                        <span>{{pages.number + 1}}</span>
+                        <span>页</span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        </div>
+        <div class="right">
+            <!--栏目导航-->
+            <div class="column-nav">
+                <h2>友情链接</h2>
+                <hr/>
+                <ul>
+                    <li>
+                        <a href="http://blog.csdn.net/supervictim?viewmode=contents" target="_blank" class="layui-btn">CSDN</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/karentwan" target="_blank" class="layui-btn">github</a>
+                    </li>
+                    <li>
+                        <a href="http://blog.csdn.net/guolin_blog?viewmode=contents" target="_blank" class="layui-btn">郭神博客</a>
+                    </li>
+                    <li>
+                        <a href="" class="layui-btn">编程</a>
+                    </li>
+                </ul>
+            </div>
+            <!--相关文章-->
+            <div class="relative-article" ng-controller="relative">
+                <h2>相关文章</h2>
+                <hr/>
+                <div>
+                    <ol>
+                        <li ng-repeat="x in arr">
+                            <a href="content.html?id={{x.id}}">
+                                {{x.title}}
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <!--手机扫码访问-->
+            <div class="qrcode">
+                <h2>手机扫码访问</h2>
+                <hr/>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-footer footer">
+        <div>
+            <span>karent.cn</span>
+        </div>
+        <div>绿色放心的小站</div>
+        <div>
+            @Copyright 万
+        </div>
+    </div>
+
+</body>
+<script src="./lib/layui/layui.js"></script>
+<script src="js/common.js"></script>
+<script src="js/listwithoutpic.js"></script>
+</html>

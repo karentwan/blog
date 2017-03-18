@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内容详情</title>
+    <link rel="stylesheet" href="./lib/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="css/nav.css"/>
+    <link rel="stylesheet" href="css/footer.css">
+    <script src="./lib/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="css/content.css">
+    <script src="./lib/angular/angular.min.js"></script>
+    <script src="./js/util.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body ng-app="app">
+
+    <div class="nav">
+        <ul class="layui-nav">
+            <li class="layui-nav-item layui-this">
+                <a href="index.html">首页</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="listwithoutpic.html?categoryName=编程语言">编程语言</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="list.html">代码实例</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="listwithoutpic.html?categoryName=生活感悟">生活感悟</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="listwithoutpic.html?categoryName=杂谈">杂谈</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="journal.html">网站大事件</a>
+            </li>
+        </ul>
+        <div class="mobile">
+            <a href="javascript:swit()" class="nav-btn">
+                <i class="fa-navicon"></i>
+            </a>
+            <span class="title">
+                    小万博客
+                </span>
+            <!--手机端显示的菜单-->
+            <div class="mobile-nav tran-anim">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="listwithoutpic.html?categoryName=编程语言">编程语言</a></li>
+                    <li><a href="list.html">代码实例</a></li>
+                    <li><a href="listwithoutpic.html?categoryName=生活感悟">生活感悟</a></li>
+                    <li><a href="listwithoutpic.html?categoryName=杂谈">杂谈</a></li>
+                    <li><a href="journal.html">网站大事件</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--遮罩-->
+        <div class="mask" style="display: none">
+        </div>
+    </div>
+
+    <!--说明-->
+    <div class="site-tips site-text explain">
+        <p>
+            <a href="index.html">首页</a><span>—</span>文章内容
+        </p>
+    </div>
+    <div class="main">
+        <div class="left" ng-controller="contentController">
+            <h2 class="title" ng-cloak>{{content.title}}</h2>
+            <div class="author">
+                <ul>
+                    <li>发布时间：<span ng-cloak>{{content.time}}</span>
+                    </li>
+                    <li>作者：<span ng-cloak>{{content.author}}</span></li>
+                    <li>查看人数：<span ng-cloak>{{content.viewCount ? content.viewCount : 0}}</span></li>
+                    <!--<li>评论数：<span ng-cloak>{{content.commentCount}}</span></li>-->
+                </ul>
+            </div>
+            <hr/>
+            <!--内容详情-->
+            <div class="content" ng-bind-html="content.content">
+            </div>
+            <!--占位高度，因为indicator脱离了文档流，所以main这个容器里面是不会给它留位置的
+                这个时候加上跟indicator一样高度的div就可解决这个问题了-->
+            <div class="placeholder">
+            </div>
+            <!--上下篇博客的连接-->
+            <div class="indicator">
+                <ul>
+                    <li>上一篇：<a ng-href="{{previous.url}}" ng-cloak><span>{{previous.title ? previous.title : '无'}}</span></a></li>
+                    <li>下一篇：<a ng-href="{{next.url}}" ><span>{{next.title ? next.title : '无'}}</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            <!--栏目导航-->
+            <div class="column-nav">
+                <h2>友情链接</h2>
+                <hr/>
+                <ul>
+                    <li>
+                        <a href="http://blog.csdn.net/supervictim?viewmode=contents" target="_blank" class="layui-btn">CSDN</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/karentwan" target="_blank" class="layui-btn">github</a>
+                    </li>
+                    <li>
+                        <a href="http://blog.csdn.net/guolin_blog?viewmode=contents" target="_blank" class="layui-btn">郭神博客</a>
+                    </li>
+                    <li>
+                        <a href="" class="layui-btn">编程</a>
+                    </li>
+                </ul>
+            </div>
+            <!--相关文章-->
+            <div class="relative-article" ng-controller="relativeController">
+                <h2>相关文章</h2>
+                <hr/>
+                <div>
+                    <ol>
+                        <li ng-repeat="x in arr">
+                            <a href="content.html?id={{x.id}}&name={{category}}">{{x.title}}</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <!--手机扫码访问-->
+            <div class="qrcode">
+                <h2>手机扫码访问</h2>
+                <hr/>
+            </div>
+        </div>
+        <div class="clear-float">
+
+        </div>
+    </div>
+
+    <div class="layui-footer footer">
+        <div>
+            <span>karent.cn</span>
+        </div>
+        <div>绿色放心的小站</div>
+        <div>
+            @Copyright 万
+        </div>
+    </div>
+</body>
+
+<script src="./lib/layui/layui.js"></script>
+<script src="js/common.js"></script>
+<script src="js/content.js"></script>
+</html>
