@@ -16,13 +16,13 @@
     <!--导航条-->
     <div class="nav">
         <ul class="layui-nav">
-            <li class="layui-nav-item layui-this">
+            <li class="layui-nav-item ">
                 <a href="index.html">首页</a>
             </li>
             <li class="layui-nav-item">
                 <a href="listwithoutpic.html?categoryName=编程语言">编程语言</a>
             </li>
-            <li class="layui-nav-item">
+            <li class="layui-nav-item layui-this">
                 <a href="list.html">代码实例</a>
             </li>
             <li class="layui-nav-item">
@@ -61,6 +61,11 @@
 
     <div class="site-tips head">
         <p>列表<span>—</span>代码实例</p>
+    </div>
+
+    <!--背景音乐-->
+    <div class="bk-music" ng-controller="bkMusic">
+        <music></music>
     </div>
 
     <div class="main" ng-controller="listController">
@@ -119,4 +124,5 @@
 <script src="./lib/layui/layui.js"></script>
 <script src="js/common.js"></script>
 <script src="js/list.js"></script>
+<script src="js/music.js"></script>
 </html>

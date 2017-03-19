@@ -25,6 +25,8 @@ layui.use(['element', 'form', 'layer'], function() {
     } else {
         items.each(function() {
             console.log($(this).text());
+            if( $(this).hasClass('layui-this'))
+                $(this).removeClass('layui-this');
             var text = $(this).text().trim();
             if( category == text) {
                 $(this).addClass('layui-this');

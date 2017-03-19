@@ -26,12 +26,10 @@ app.controller("daily", function($scope, $http) {
             if( data.code == 200) {
                 var sentence = data.data;
                 daily.joke = sentence[0];
-                daily.motto = sentence[1];
-                daily.famous = sentence[2];
             }
             $scope.daily = daily;
         }
-        console.log(code);
+        // console.log(code);
     }).catch(function(resp) {
         console.log("error:" + resp);
     });

@@ -65,6 +65,12 @@
             <a href="index.html">首页</a><span>—</span>文章内容
         </p>
     </div>
+
+    <!--背景音乐-->
+    <div class="bk-music" ng-controller="bkMusic">
+        <music></music>
+    </div>
+
     <div class="main">
         <div class="left" ng-controller="contentController">
             <h2 class="title" ng-cloak>{{content.title}}</h2>
@@ -150,4 +156,5 @@
 <script src="./lib/layui/layui.js"></script>
 <script src="js/common.js"></script>
 <script src="js/content.js"></script>
+<script src="js/music.js"></script>
 </html>
